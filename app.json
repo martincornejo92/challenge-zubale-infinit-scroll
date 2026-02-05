@@ -20,10 +20,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.tincho22.challengezubaleinfinitscroll"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a33e0259-b0b1-43e1-89f5-2fb8ac81f172"
+      }
+    },
+    "owner": "tincho22"
   }
 }
