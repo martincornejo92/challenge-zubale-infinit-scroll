@@ -17,7 +17,6 @@ export function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Marketplace" component={MarketplaceScreen} />
-        <Stack.Screen name="Detail" component={DetailScreen} />
         <Stack.Screen name="TaskDetail" component={TaskDetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
