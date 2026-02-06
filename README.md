@@ -37,12 +37,6 @@ npx expo start -c
 ```
 ## 📸 Captura de pantalla
 
-![Home](src/assets/1.png)
-![Home](src/assets/2.png)
-![Home](src/assets/3.png)
-
-## 📸 Captura de pantalla
-
 <p align="center">
   <img src="src/assets/1.png" width="170" />
   <img src="src/assets/2.png" width="170" />
