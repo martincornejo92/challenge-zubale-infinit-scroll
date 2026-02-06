@@ -53,6 +53,10 @@ npx expo start -c
 
 - La UI está pensada para mantener 60fps estables incluso con miles de ítems en pantalla.
 
+## Ecutable
+
+- release/marketplace.apk
+
 ## Autor
 
 Lic. Martín Cornejo
