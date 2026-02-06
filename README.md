@@ -43,4 +43,18 @@ npx expo start -c
   <img src="src/assets/3.png" width="170" />
 </p>
 
+## Notas de performance
 
+- Se utiliza FlashList para manejar grandes volúmenes de datos de forma eficiente.
+
+- Las imágenes se cargan con expo-image para aprovechar cache y mejorar tiempos de render.
+
+- Los filtros y ordenamientos se procesan de forma optimizada para evitar bloqueos del hilo principal.
+
+- La UI está pensada para mantener 60fps estables incluso con miles de ítems en pantalla.
+
+## Autor
+
+Lic. Martín Cornejo
+Dev Mobile Sr.
+Challenge técnico – Infinite Marketplace
