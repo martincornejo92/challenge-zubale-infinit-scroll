@@ -27,13 +27,13 @@ El objetivo del proyecto es demostrar:
 Clonar el repositorio e instalar dependencias:
 
 ```bash
-npm install
+npm install --force
 ```
 
 ##  Ejecución
 
 ```bash
-npm start
+npx expo start -c 
 ```
 ##  Estructura del proyecto 
 
