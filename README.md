@@ -57,6 +57,10 @@ npx expo start -c
 
 - release/marketplace.apk
 
+## Video
+
+https://youtube.com/shorts/Z4jrIkF1Jao?feature=share
+
 ## Autor
 
 Lic. Martín Cornejo
