@@ -35,18 +35,10 @@ npm install --force
 ```bash
 npx expo start -c 
 ```
-##  Estructura del proyecto 
+## 📸 Captura de pantalla
 
-.
-├── src/
-│   ├── screens/      # Pantallas principales
-│   ├── components/   # Componentes reutilizables 
-│   ├── hooks/        # Hooks personalizados 
-│   ├── data/         # Generación y tipos de datos mock
-│   ├── store/        # Estado global de filtros
-│   └── utils/        # Utilidades
-├── assets/           # Recursos e imágenes
-├── package.json
-└── README.md
+![Home](assets/1.png)
+![Home](assets/2.png)
+![Home](assets/3.png)
 
 
