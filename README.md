@@ -53,7 +53,7 @@ npx expo start -c
 
 - La UI está pensada para mantener 60fps estables incluso con miles de ítems en pantalla.
 
-## Ecutable
+## Ejecutable
 
 - release/marketplace.apk
 
