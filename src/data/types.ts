@@ -2,7 +2,12 @@ export type Task = {
   id: string;
   title: string;
   price: number;
-  category: string;
-  distance: number; // km
+  status: "available" | "taken";
+  location: {
+    lat: number;
+    lng: number;
+    address: string;
+  };
   image_url: string;
+  expires_at: string;
 };

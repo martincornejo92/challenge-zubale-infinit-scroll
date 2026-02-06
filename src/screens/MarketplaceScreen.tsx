@@ -18,7 +18,7 @@ export function MarketplaceScreen() {
         data={filteredTasks}
         renderItem={({ item }) => <TaskCard item={item} />}
         estimatedItemSize={200}
-        numColumns={2}
+        numColumns={1}
         keyExtractor={(item) => item.id}
         contentContainerStyle={{ padding: 6, paddingTop: 6 }}
       />

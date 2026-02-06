@@ -1,10 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Platform } from "react-native";
 import { SharedElement } from "react-navigation-shared-element";
 import { Image } from "expo-image";
+import { Task } from "../data/types";
 
 export default function TaskDetailScreen({ route }) {
-  const { item } = route.params;
+  const { item }: { item: Task } = route.params;
+
+  const openInMaps = () => {
+  const { lat, lng, address } = item.location;
+  const url = Platform.select({
+    ios: `http://maps.apple.com/?ll=${lat},${lng}&q=${encodeURIComponent(address)}`,
+    android: `geo:${lat},${lng}?q=${lat},${lng}(${encodeURIComponent(address)})`,
+    default: `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`,
+  });
+
+  Linking.openURL(url!);
+};
+
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -28,11 +41,30 @@ export default function TaskDetailScreen({ route }) {
 
         <View style={styles.chipsRow}>
           <View style={styles.chip}>
-            <Text style={styles.chipText}>{item.category}</Text>
+            <Text style={styles.chipText}>{item.status}</Text>
           </View>
           <View style={styles.chip}>
-            <Text style={styles.chipText}>{item.distance} km</Text>
+            <Text style={styles.chipText}>
+              {item.location.address}
+            </Text>
           </View>
+        </View>
+
+        <View style={styles.metaRow}>
+  <Text style={styles.metaLabel}>Ubicación</Text>
+
+        <TouchableOpacity onPress={openInMaps}>
+            <Text style={[styles.metaValue, styles.link]}>
+            {item.location.address}
+            </Text>
+        </TouchableOpacity>
+        </View>
+
+        <View style={styles.metaRow}>
+          <Text style={styles.metaLabel}>Expira</Text>
+          <Text style={styles.metaValue}>
+            {new Date(item.expires_at).toLocaleString()}
+          </Text>
         </View>
       </View>
     </ScrollView>
@@ -100,8 +132,9 @@ const styles = StyleSheet.create({
 
   chipsRow: {
     flexDirection: "row",
+    flexWrap: "wrap",
     gap: 8,
-    marginBottom: 12,
+    marginBottom: 16,
   },
 
   chip: {
@@ -116,11 +149,24 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
 
-  description: {
-    fontSize: 14,
-    color: "#555",
-    lineHeight: 20,
+  metaRow: {
+    marginTop: 8,
   },
+
+  metaLabel: {
+    fontSize: 12,
+    color: "#777",
+  },
+
+  metaValue: {
+    fontSize: 14,
+    fontWeight: "600",
+  },
+  link: {
+  color: "#1a73e8",
+  textDecorationLine: "underline",
+},
+coords: {
+  fontSize: 12,
+},
 });
-
-

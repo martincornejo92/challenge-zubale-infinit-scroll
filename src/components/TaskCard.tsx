@@ -17,7 +17,7 @@ function TaskCardComponent({ item }: Props) {
   };
 
   return (
-    <TouchableOpacity style={styles.container} onPress={handlePress}>
+    <TouchableOpacity style={styles.container} onPress={handlePress} activeOpacity={0.8}>
       <SharedElement id={`item.${item.id}.photo`}>
         <Image
           source={{ uri: item.image_url }}
@@ -26,11 +26,24 @@ function TaskCardComponent({ item }: Props) {
           cachePolicy="memory-disk"
         />
       </SharedElement>
+
       <View style={styles.info}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text>${item.price}</Text>
-        <Text>{item.category}</Text>
-        <Text>{item.distance} km</Text>
+        <Text style={styles.title} numberOfLines={2}>
+          {item.title}
+        </Text>
+
+        <View style={styles.metaRow}>
+          <Text style={styles.price}>${item.price}</Text>
+          <Text style={styles.status}>{item.status}</Text>
+        </View>
+
+        <Text style={styles.address} numberOfLines={1}>
+          📍 {item.location.address}
+        </Text>
+
+        <Text style={styles.expires}>
+          ⏰ {new Date(item.expires_at).toLocaleDateString()}
+        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -44,15 +57,16 @@ const styles = StyleSheet.create({
     padding: 12,
     backgroundColor: "#fff",
     margin: 6,
-    borderRadius: 8,
+    borderRadius: 12,
     elevation: 2,
     flex: 1,
   },
   image: {
-    width: 80,
-    height: 80,
-    borderRadius: 8,
+    width: 88,
+    height: 88,
+    borderRadius: 10,
     marginRight: 12,
+    backgroundColor: "#eee",
   },
   info: {
     flex: 1,
@@ -60,7 +74,31 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "600",
+    fontSize: 14,
+  },
+  metaRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  price: {
+    fontSize: 16,
+    fontWeight: "700",
+  },
+  status: {
+    fontSize: 12,
+    color: "#666",
+    textTransform: "capitalize",
+  },
+  address: {
+    fontSize: 12,
+    color: "#444",
+  },
+  expires: {
+    fontSize: 11,
+    color: "#888",
   },
 });
+
 
 

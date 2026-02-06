@@ -1,20 +1,26 @@
 import { create } from "zustand";
 
 type SortBy = "newest" | "price";
-type Category = "all" | "design" | "dev" | "marketing";
+type PriceFilter = "all" | "lt50" | "50to100" | "gt100";
+type DistanceFilter = "all" | "lt2" | "lt5" | "lt10";
 
 type FiltersState = {
-  category: Category;
   sortBy: SortBy;
-  setCategory: (c: Category) => void;
+  price: PriceFilter;
+  distance: DistanceFilter;
   setSortBy: (s: SortBy) => void;
+  setPrice: (p: PriceFilter) => void;
+  setDistance: (d: DistanceFilter) => void;
 };
 
 export const useFiltersStore = create<FiltersState>((set) => ({
-  category: "all",
   sortBy: "newest",
-  setCategory: (category) => set({ category }),
+  price: "all",
+  distance: "all",
   setSortBy: (sortBy) => set({ sortBy }),
+  setPrice: (price) => set({ price }),
+  setDistance: (distance) => set({ distance }),
 }));
+
 
 

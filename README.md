@@ -38,9 +38,9 @@ npx expo start -c
 ## 📸 Captura de pantalla
 
 <p align="center">
-  <img src="src/assets/1.png" width="170" />
-  <img src="src/assets/2.png" width="170" />
-  <img src="src/assets/3.png" width="170" />
+  <img src="assets/1.png" width="170" />
+  <img src="assets/2.png" width="170" />
+  <img src="assets/3.png" width="170" />
 </p>
 
 ## Notas de performance

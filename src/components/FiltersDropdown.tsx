@@ -5,7 +5,8 @@ import { useFiltersStore } from "../store/useFiltersStore";
 export function FiltersDropdown() {
   const [visible, setVisible] = useState(false);
 
-  const { category, setCategory, sortBy, setSortBy } = useFiltersStore();
+  const { sortBy, setSortBy, price, setPrice, distance, setDistance } =
+    useFiltersStore();
 
   return (
     <>
@@ -18,34 +19,57 @@ export function FiltersDropdown() {
           <View style={styles.sheet}>
             <Text style={styles.title}>Filtros</Text>
 
-            <Text style={styles.label}>Categoría</Text>
-            <View style={styles.row}>
-              {["all", "design", "dev", "marketing"].map((c) => (
-                <TouchableOpacity
-                  key={c}
-                  style={[
-                    styles.option,
-                    category === c && styles.optionActive,
-                  ]}
-                  onPress={() => setCategory(c)}
-                >
-                  <Text>{c}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-
             <Text style={styles.label}>Orden</Text>
             <View style={styles.row}>
               {["newest", "price"].map((s) => (
                 <TouchableOpacity
                   key={s}
-                  style={[
-                    styles.option,
-                    sortBy === s && styles.optionActive,
-                  ]}
-                  onPress={() => setSortBy(s)}
+                  style={[styles.option, sortBy === s && styles.optionActive]}
+                  onPress={() => setSortBy(s as any)}
                 >
                   <Text>{s}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            <Text style={styles.label}>Precio</Text>
+            <View style={styles.row}>
+              {[
+                { key: "all", label: "Todos" },
+                { key: "lt50", label: "< $50" },
+                { key: "50to100", label: "$50 - $100" },
+                { key: "gt100", label: "> $100" },
+              ].map((p) => (
+                <TouchableOpacity
+                  key={p.key}
+                  style={[
+                    styles.option,
+                    price === p.key && styles.optionActive,
+                  ]}
+                  onPress={() => setPrice(p.key as any)}
+                >
+                  <Text>{p.label}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+
+            <Text style={styles.label}>Distancia</Text>
+            <View style={styles.row}>
+              {[
+                { key: "all", label: "Todas" },
+                { key: "lt2", label: "< 2km" },
+                { key: "lt5", label: "< 5km" },
+                { key: "lt10", label: "< 10km" },
+              ].map((d) => (
+                <TouchableOpacity
+                  key={d.key}
+                  style={[
+                    styles.option,
+                    distance === d.key && styles.optionActive,
+                  ]}
+                  onPress={() => setDistance(d.key as any)}
+                >
+                  <Text>{d.label}</Text>
                 </TouchableOpacity>
               ))}
             </View>
@@ -108,4 +132,5 @@ const styles = StyleSheet.create({
   },
   applyText: { color: "#fff", fontWeight: "600" },
 });
+
 
