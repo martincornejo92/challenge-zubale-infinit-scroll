@@ -10,33 +10,27 @@ export function MarketplaceScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.stickyHeader}>
+        <FiltersDropdown />
+      </View>
+
       <FlashList
         data={filteredTasks}
         renderItem={({ item }) => <TaskCard item={item} />}
         estimatedItemSize={200}
-        numColumns={2} // diseño tipo Pinterest
+        numColumns={2}
         keyExtractor={(item) => item.id}
-        stickyHeaderIndices={[0]}
-        ListHeaderComponent={() => <FiltersDropdown />}
-        contentContainerStyle={{ padding: 6 }}
+        contentContainerStyle={{ padding: 6, paddingTop: 6 }}
       />
     </View>
   );
 }
 
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  header: {
-    padding: 12,
-    alignItems: "flex-start",
-  },
-  listContainer: {
-    flex: 1, // ✅ CLAVE: le da altura a la lista
+  container: { flex: 1 },
+  stickyHeader: {
+    backgroundColor: "white",
+    zIndex: 10,
+    padding: 6,
   },
 });
-
-
-
